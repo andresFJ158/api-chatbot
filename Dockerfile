@@ -4,6 +4,9 @@ FROM node:20-alpine
 # Set working directory
 WORKDIR /app
 
+# Install git (required for some npm packages)
+RUN apk add --no-cache git
+
 # Install dependencies first (for better caching)
 COPY package*.json ./
 COPY prisma ./prisma/
