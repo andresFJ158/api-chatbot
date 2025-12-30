@@ -1,12 +1,4 @@
 import { Injectable, OnModuleInit, Logger, Inject, forwardRef } from '@nestjs/common';
-// Use type-only imports for baileys types (these work with CommonJS)
-import type {
-  ConnectionState,
-  DisconnectReason,
-  WASocket,
-  WAMessage,
-  proto,
-} from '@whiskeysockets/baileys';
 import { PrismaService } from '../prisma/prisma.service';
 import { MessagesService } from '../messages/messages.service';
 import { BotService } from '../bot/bot.service';
@@ -19,8 +11,22 @@ import pino from 'pino';
 import fetch from 'node-fetch';
 import qrcode from 'qrcode-terminal';
 
+// Define types manually to avoid importing baileys at compile time
+type WASocket = any;
+type WAMessage = any;
+type ConnectionState = 'close' | 'connecting' | 'open';
+type DisconnectReason = any;
+type proto = any;
+
 // Dynamic import type for baileys
-type BaileysModule = typeof import('@whiskeysockets/baileys');
+type BaileysModule = {
+  makeWASocket: any;
+  useMultiFileAuthState: any;
+  DisconnectReason: any;
+  jidDecode: any;
+  jidNormalizedUser: any;
+  default?: any;
+};
 
 interface PendingMessage {
   phone: string;
@@ -335,7 +341,7 @@ export class WhatsAppService implements OnModuleInit {
   }
 
   private async handleIncomingMessage(m: {
-    messages: proto.IWebMessageInfo[];
+    messages: any[];
     type: 'notify' | 'append';
   }) {
     if (m.type !== 'notify') {
@@ -1095,7 +1101,7 @@ export class WhatsAppService implements OnModuleInit {
     }
   }
 
-  private extractMessageContent(message: proto.IMessage): string | null {
+  private extractMessageContent(message: any): string | null {
     if (message.conversation) return message.conversation;
     if (message.extendedTextMessage?.text) return message.extendedTextMessage.text;
     if (message.imageMessage?.caption) return message.imageMessage.caption;
@@ -1622,7 +1628,7 @@ export class WhatsAppService implements OnModuleInit {
 
       // Get messages from Baileys using fetchMessagesFromWA
       // This method fetches messages directly from WhatsApp servers
-      let messages: proto.IWebMessageInfo[] = [];
+      let messages: any[] = [];
 
       try {
         // Use Baileys fetchMessagesFromWA to get messages from WhatsApp
