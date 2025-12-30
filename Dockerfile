@@ -23,9 +23,9 @@ COPY . .
 # Build the application
 RUN npm run build
 
-# Verify build output exists
+# Verify build output exists and find main.js
 RUN ls -la dist/ || (echo "Build failed - dist directory not found" && exit 1)
-RUN test -f dist/main.js || (echo "Build failed - dist/main.js not found" && exit 1)
+RUN find dist -name "main.js" -type f || (echo "Build failed - main.js not found" && find dist -type f | head -20 && exit 1)
 
 # Remove devDependencies to reduce image size
 RUN npm prune --production
