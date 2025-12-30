@@ -1,0 +1,145 @@
+import { ConversationsService } from './conversations.service';
+import { AssignConversationDto } from './dto/assign-conversation.dto';
+import { UpdateModeDto } from './dto/update-mode.dto';
+export declare class ConversationsController {
+    private conversationsService;
+    private readonly logger;
+    constructor(conversationsService: ConversationsService);
+    findAll(tag?: string, assignedAgentId?: string, mode?: string): Promise<({
+        user: {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            phone: string;
+            name: string;
+            email: string;
+            tags: string[];
+        };
+        assignedAgent: {
+            id: string;
+            name: string;
+            email: string;
+            online: boolean;
+        };
+        messages: {
+            id: string;
+            createdAt: Date;
+            conversationId: string;
+            sender: string;
+            agentId: string | null;
+            content: string;
+        }[];
+    } & {
+        id: string;
+        userId: string;
+        assignedAgentId: string | null;
+        tag: string | null;
+        mode: string;
+        lastMessage: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+    })[]>;
+    findOne(id: string): Promise<{
+        user: {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            phone: string | null;
+            name: string;
+            lastName: string | null;
+            email: string | null;
+            city: string | null;
+            whatsappJid: string | null;
+            tags: string[];
+        };
+        assignedAgent: {
+            id: string;
+            name: string;
+            email: string;
+            online: boolean;
+        };
+        messages: {
+            id: string;
+            createdAt: Date;
+            conversationId: string;
+            sender: string;
+            agentId: string | null;
+            content: string;
+        }[];
+    } & {
+        id: string;
+        userId: string;
+        assignedAgentId: string | null;
+        tag: string | null;
+        mode: string;
+        lastMessage: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
+    assign(id: string, assignDto: AssignConversationDto): Promise<{
+        user: {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            phone: string | null;
+            name: string;
+            lastName: string | null;
+            email: string | null;
+            city: string | null;
+            whatsappJid: string | null;
+            tags: string[];
+        };
+        assignedAgent: {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            name: string;
+            email: string;
+            password: string;
+            role: string;
+            online: boolean;
+        };
+    } & {
+        id: string;
+        userId: string;
+        assignedAgentId: string | null;
+        tag: string | null;
+        mode: string;
+        lastMessage: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
+    updateMode(id: string, updateModeDto: UpdateModeDto): Promise<{
+        user: {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            phone: string | null;
+            name: string;
+            lastName: string | null;
+            email: string | null;
+            city: string | null;
+            whatsappJid: string | null;
+            tags: string[];
+        };
+        assignedAgent: {
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+            name: string;
+            email: string;
+            password: string;
+            role: string;
+            online: boolean;
+        };
+    } & {
+        id: string;
+        userId: string;
+        assignedAgentId: string | null;
+        tag: string | null;
+        mode: string;
+        lastMessage: string | null;
+        createdAt: Date;
+        updatedAt: Date;
+    }>;
+}
