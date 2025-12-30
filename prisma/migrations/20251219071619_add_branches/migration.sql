@@ -6,7 +6,7 @@ CREATE TABLE "branches" (
     "latitude" DOUBLE PRECISION NOT NULL,
     "longitude" DOUBLE PRECISION NOT NULL,
     "phone" TEXT,
-    "email" TEXT,
+    "openingHours" TEXT,
     "description" TEXT,
     "isActive" BOOLEAN NOT NULL DEFAULT true,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
