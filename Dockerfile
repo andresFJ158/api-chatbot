@@ -23,8 +23,15 @@ COPY . .
 # Build the application
 RUN npm run build
 
+# Verify build output exists
+RUN ls -la dist/ || (echo "Build failed - dist directory not found" && exit 1)
+RUN test -f dist/main.js || (echo "Build failed - dist/main.js not found" && exit 1)
+
 # Remove devDependencies to reduce image size
 RUN npm prune --production
+
+# Verify dist still exists after prune
+RUN test -f dist/main.js || (echo "dist/main.js missing after prune" && exit 1)
 
 # Expose port
 EXPOSE 9090
