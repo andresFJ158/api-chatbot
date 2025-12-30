@@ -12,11 +12,11 @@ export declare class ContactsController {
     } & {
         id: string;
         createdAt: Date;
+        name: string;
+        email: string | null;
         updatedAt: Date;
         phone: string | null;
-        name: string;
         lastName: string | null;
-        email: string | null;
         city: string | null;
         whatsappJid: string | null;
         tags: string[];
@@ -28,11 +28,11 @@ export declare class ContactsController {
     } & {
         id: string;
         createdAt: Date;
+        name: string;
+        email: string | null;
         updatedAt: Date;
         phone: string | null;
-        name: string;
         lastName: string | null;
-        email: string | null;
         city: string | null;
         whatsappJid: string | null;
         tags: string[];
@@ -44,11 +44,11 @@ export declare class ContactsController {
     } & {
         id: string;
         createdAt: Date;
+        name: string;
+        email: string | null;
         updatedAt: Date;
         phone: string | null;
-        name: string;
         lastName: string | null;
-        email: string | null;
         city: string | null;
         whatsappJid: string | null;
         tags: string[];
@@ -66,22 +66,22 @@ export declare class ContactsController {
         };
         conversations: {
             id: string;
+            createdAt: Date;
+            updatedAt: Date;
             userId: string;
             assignedAgentId: string | null;
             tag: string | null;
             mode: string;
             lastMessage: string | null;
-            createdAt: Date;
-            updatedAt: Date;
         }[];
     } & {
         id: string;
         createdAt: Date;
+        name: string;
+        email: string | null;
         updatedAt: Date;
         phone: string | null;
-        name: string;
         lastName: string | null;
-        email: string | null;
         city: string | null;
         whatsappJid: string | null;
         tags: string[];
@@ -93,11 +93,11 @@ export declare class ContactsController {
     } & {
         id: string;
         createdAt: Date;
+        name: string;
+        email: string | null;
         updatedAt: Date;
         phone: string | null;
-        name: string;
         lastName: string | null;
-        email: string | null;
         city: string | null;
         whatsappJid: string | null;
         tags: string[];
@@ -105,11 +105,11 @@ export declare class ContactsController {
     remove(id: string): Promise<{
         id: string;
         createdAt: Date;
+        name: string;
+        email: string | null;
         updatedAt: Date;
         phone: string | null;
-        name: string;
         lastName: string | null;
-        email: string | null;
         city: string | null;
         whatsappJid: string | null;
         tags: string[];

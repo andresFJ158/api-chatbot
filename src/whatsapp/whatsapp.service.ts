@@ -1,14 +1,11 @@
 import { Injectable, OnModuleInit, Logger, Inject, forwardRef } from '@nestjs/common';
-import makeWASocket, {
+// Use type-only imports for baileys types (these work with CommonJS)
+import type {
   ConnectionState,
   DisconnectReason,
-  useMultiFileAuthState,
   WASocket,
   WAMessage,
   proto,
-  jidNormalizedUser,
-  jidDecode,
-  isLidUser,
 } from '@whiskeysockets/baileys';
 import { PrismaService } from '../prisma/prisma.service';
 import { MessagesService } from '../messages/messages.service';
@@ -21,6 +18,9 @@ import * as path from 'path';
 import pino from 'pino';
 import fetch from 'node-fetch';
 import qrcode from 'qrcode-terminal';
+
+// Dynamic import type for baileys
+type BaileysModule = typeof import('@whiskeysockets/baileys');
 
 interface PendingMessage {
   phone: string;
@@ -43,6 +43,15 @@ export class WhatsAppService implements OnModuleInit {
   private pendingMessages: PendingMessage[] = [];
   private readonly maxPendingMessageAge = 5 * 60 * 1000; // 5 minutes
   private readonly maxMessageRetries = 3;
+  private baileys: BaileysModule | null = null;
+
+  // Lazy load baileys module
+  private async getBaileys(): Promise<BaileysModule> {
+    if (!this.baileys) {
+      this.baileys = await import('@whiskeysockets/baileys');
+    }
+    return this.baileys;
+  }
 
   constructor(
     private prisma: PrismaService,
@@ -94,7 +103,8 @@ export class WhatsAppService implements OnModuleInit {
 
       this.logger.log(`Initializing WhatsApp with session path: ${absoluteSessionPath}`);
 
-      const { state, saveCreds } = await useMultiFileAuthState(absoluteSessionPath);
+      const baileys = await this.getBaileys();
+      const { state, saveCreds } = await baileys.useMultiFileAuthState(absoluteSessionPath);
 
       // Verificar si hay credenciales guardadas
       if (state.creds?.registered) {
@@ -106,7 +116,7 @@ export class WhatsAppService implements OnModuleInit {
       // Crear logger de pino para Baileys (usar 'error' para ver errores importantes)
       const logger = pino({ level: 'error' });
 
-      this.socket = makeWASocket({
+      this.socket = baileys.makeWASocket({
         auth: state,
         logger: logger,
         connectTimeoutMs: 60_000, // 60 segundos
@@ -123,7 +133,7 @@ export class WhatsAppService implements OnModuleInit {
         shouldIgnoreJid: () => false,
       });
 
-      this.socket.ev.on('connection.update', (update) => {
+      this.socket.ev.on('connection.update', async (update) => {
         const { connection, lastDisconnect, qr, isNewLogin, receivedPendingNotifications } = update;
 
         // Log del estado de conexión para debugging
@@ -164,8 +174,9 @@ export class WhatsAppService implements OnModuleInit {
         }
 
         if (connection === 'close') {
+          const baileys = await this.getBaileys();
           const disconnectReason = (lastDisconnect?.error as any)?.output?.statusCode;
-          const isLoggedOut = disconnectReason === DisconnectReason.loggedOut;
+          const isLoggedOut = disconnectReason === baileys.DisconnectReason.loggedOut;
 
           const errorDetails = lastDisconnect?.error as any;
           const errorMessage = errorDetails?.message || errorDetails?.toString() || 'Unknown error';
@@ -542,7 +553,8 @@ export class WhatsAppService implements OnModuleInit {
           // ESTRATEGIA 6: Intentar usar jidDecode para extraer información del JID
           if (!phone) {
             try {
-              const decoded = jidDecode(remoteJid);
+              const baileys = await this.getBaileys();
+              const decoded = baileys.jidDecode(remoteJid);
               if (decoded && decoded.user) {
                 // jidDecode puede devolver información útil
                 this.logger.debug(`[handleIncomingMessage] jidDecode result: ${JSON.stringify(decoded)}`);
@@ -568,7 +580,8 @@ export class WhatsAppService implements OnModuleInit {
         } else if (jidType === 'phone') {
           // Para JIDs normales (@s.whatsapp.net), usar jidNormalizedUser
           try {
-            const normalizedJid = jidNormalizedUser(remoteJid);
+            const baileys = await this.getBaileys();
+            const normalizedJid = baileys.jidNormalizedUser(remoteJid);
             this.logger.debug(`[handleIncomingMessage] jidNormalizedUser result: ${normalizedJid} from JID: ${remoteJid}`);
             
             // Si jidNormalizedUser devuelve un JID completo (con @), extraer solo el número

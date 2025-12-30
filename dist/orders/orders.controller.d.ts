@@ -6,39 +6,39 @@ export declare class OrdersController {
     private readonly logger;
     constructor(ordersService: OrdersService);
     create(createOrderDto: CreateOrderDto, req: any): Promise<{
-        user: {
-            id: string;
-            createdAt: Date;
-            updatedAt: Date;
-            phone: string | null;
-            name: string;
-            lastName: string | null;
-            email: string | null;
-            city: string | null;
-            whatsappJid: string | null;
-            tags: string[];
-        };
         agent: {
             id: string;
             createdAt: Date;
-            updatedAt: Date;
             name: string;
             email: string;
             password: string;
             role: string;
             online: boolean;
+            updatedAt: Date;
+        };
+        user: {
+            id: string;
+            createdAt: Date;
+            name: string;
+            email: string | null;
+            updatedAt: Date;
+            phone: string | null;
+            lastName: string | null;
+            city: string | null;
+            whatsappJid: string | null;
+            tags: string[];
         };
         branch: {
             id: string;
             createdAt: Date;
+            name: string;
             updatedAt: Date;
             phone: string | null;
-            name: string;
-            description: string | null;
             address: string;
             latitude: number;
             longitude: number;
             openingHours: string | null;
+            description: string | null;
             isActive: boolean;
         };
         items: ({
@@ -46,16 +46,16 @@ export declare class OrdersController {
                 category: {
                     id: string;
                     createdAt: Date;
-                    updatedAt: Date;
                     name: string;
+                    updatedAt: Date;
                     description: string | null;
                     parentId: string | null;
                 };
             } & {
                 id: string;
                 createdAt: Date;
-                updatedAt: Date;
                 name: string;
+                updatedAt: Date;
                 description: string;
                 price: number;
                 stock: number;
@@ -64,38 +64,38 @@ export declare class OrdersController {
         } & {
             id: string;
             createdAt: Date;
-            productId: string;
+            subtotal: number;
+            discount: number;
             quantity: number;
             unitPrice: number;
-            discount: number;
-            subtotal: number;
+            productId: string;
             orderId: string;
         })[];
     } & {
         id: string;
-        userId: string | null;
         createdAt: Date;
-        updatedAt: Date;
         agentId: string | null;
-        discount: number;
-        branchId: string;
-        tax: number;
-        notes: string | null;
+        updatedAt: Date;
         status: string;
         subtotal: number;
+        discount: number;
+        tax: number;
         total: number;
+        notes: string | null;
+        branchId: string;
+        userId: string | null;
     }>;
     findAll(branchId?: string, userId?: string, status?: string, startDate?: string, endDate?: string): Promise<({
-        user: {
-            id: string;
-            phone: string;
-            name: string;
-            lastName: string;
-        };
         agent: {
             id: string;
             name: string;
             email: string;
+        };
+        user: {
+            id: string;
+            name: string;
+            phone: string;
+            lastName: string;
         };
         branch: {
             id: string;
@@ -107,16 +107,16 @@ export declare class OrdersController {
                 category: {
                     id: string;
                     createdAt: Date;
-                    updatedAt: Date;
                     name: string;
+                    updatedAt: Date;
                     description: string | null;
                     parentId: string | null;
                 };
             } & {
                 id: string;
                 createdAt: Date;
-                updatedAt: Date;
                 name: string;
+                updatedAt: Date;
                 description: string;
                 price: number;
                 stock: number;
@@ -125,26 +125,26 @@ export declare class OrdersController {
         } & {
             id: string;
             createdAt: Date;
-            productId: string;
+            subtotal: number;
+            discount: number;
             quantity: number;
             unitPrice: number;
-            discount: number;
-            subtotal: number;
+            productId: string;
             orderId: string;
         })[];
     } & {
         id: string;
-        userId: string | null;
         createdAt: Date;
-        updatedAt: Date;
         agentId: string | null;
-        discount: number;
-        branchId: string;
-        tax: number;
-        notes: string | null;
+        updatedAt: Date;
         status: string;
         subtotal: number;
+        discount: number;
+        tax: number;
         total: number;
+        notes: string | null;
+        branchId: string;
+        userId: string | null;
     })[]>;
     getStats(branchId?: string, startDate?: string, endDate?: string): Promise<{
         totalOrders: number;
@@ -154,39 +154,39 @@ export declare class OrdersController {
         averageOrderValue: number;
     }>;
     findOne(id: string): Promise<{
-        user: {
-            id: string;
-            createdAt: Date;
-            updatedAt: Date;
-            phone: string | null;
-            name: string;
-            lastName: string | null;
-            email: string | null;
-            city: string | null;
-            whatsappJid: string | null;
-            tags: string[];
-        };
         agent: {
             id: string;
             createdAt: Date;
-            updatedAt: Date;
             name: string;
             email: string;
             password: string;
             role: string;
             online: boolean;
+            updatedAt: Date;
+        };
+        user: {
+            id: string;
+            createdAt: Date;
+            name: string;
+            email: string | null;
+            updatedAt: Date;
+            phone: string | null;
+            lastName: string | null;
+            city: string | null;
+            whatsappJid: string | null;
+            tags: string[];
         };
         branch: {
             id: string;
             createdAt: Date;
+            name: string;
             updatedAt: Date;
             phone: string | null;
-            name: string;
-            description: string | null;
             address: string;
             latitude: number;
             longitude: number;
             openingHours: string | null;
+            description: string | null;
             isActive: boolean;
         };
         items: ({
@@ -194,16 +194,16 @@ export declare class OrdersController {
                 category: {
                     id: string;
                     createdAt: Date;
-                    updatedAt: Date;
                     name: string;
+                    updatedAt: Date;
                     description: string | null;
                     parentId: string | null;
                 };
             } & {
                 id: string;
                 createdAt: Date;
-                updatedAt: Date;
                 name: string;
+                updatedAt: Date;
                 description: string;
                 price: number;
                 stock: number;
@@ -212,61 +212,61 @@ export declare class OrdersController {
         } & {
             id: string;
             createdAt: Date;
-            productId: string;
+            subtotal: number;
+            discount: number;
             quantity: number;
             unitPrice: number;
-            discount: number;
-            subtotal: number;
+            productId: string;
             orderId: string;
         })[];
     } & {
         id: string;
-        userId: string | null;
         createdAt: Date;
-        updatedAt: Date;
         agentId: string | null;
-        discount: number;
-        branchId: string;
-        tax: number;
-        notes: string | null;
+        updatedAt: Date;
         status: string;
         subtotal: number;
+        discount: number;
+        tax: number;
         total: number;
+        notes: string | null;
+        branchId: string;
+        userId: string | null;
     }>;
     update(id: string, updateOrderDto: UpdateOrderDto): Promise<{
-        user: {
-            id: string;
-            createdAt: Date;
-            updatedAt: Date;
-            phone: string | null;
-            name: string;
-            lastName: string | null;
-            email: string | null;
-            city: string | null;
-            whatsappJid: string | null;
-            tags: string[];
-        };
         agent: {
             id: string;
             createdAt: Date;
-            updatedAt: Date;
             name: string;
             email: string;
             password: string;
             role: string;
             online: boolean;
+            updatedAt: Date;
+        };
+        user: {
+            id: string;
+            createdAt: Date;
+            name: string;
+            email: string | null;
+            updatedAt: Date;
+            phone: string | null;
+            lastName: string | null;
+            city: string | null;
+            whatsappJid: string | null;
+            tags: string[];
         };
         branch: {
             id: string;
             createdAt: Date;
+            name: string;
             updatedAt: Date;
             phone: string | null;
-            name: string;
-            description: string | null;
             address: string;
             latitude: number;
             longitude: number;
             openingHours: string | null;
+            description: string | null;
             isActive: boolean;
         };
         items: ({
@@ -274,16 +274,16 @@ export declare class OrdersController {
                 category: {
                     id: string;
                     createdAt: Date;
-                    updatedAt: Date;
                     name: string;
+                    updatedAt: Date;
                     description: string | null;
                     parentId: string | null;
                 };
             } & {
                 id: string;
                 createdAt: Date;
-                updatedAt: Date;
                 name: string;
+                updatedAt: Date;
                 description: string;
                 price: number;
                 stock: number;
@@ -292,61 +292,61 @@ export declare class OrdersController {
         } & {
             id: string;
             createdAt: Date;
-            productId: string;
+            subtotal: number;
+            discount: number;
             quantity: number;
             unitPrice: number;
-            discount: number;
-            subtotal: number;
+            productId: string;
             orderId: string;
         })[];
     } & {
         id: string;
-        userId: string | null;
         createdAt: Date;
-        updatedAt: Date;
         agentId: string | null;
-        discount: number;
-        branchId: string;
-        tax: number;
-        notes: string | null;
+        updatedAt: Date;
         status: string;
         subtotal: number;
+        discount: number;
+        tax: number;
         total: number;
+        notes: string | null;
+        branchId: string;
+        userId: string | null;
     }>;
     cancel(id: string, req: any): Promise<{
-        user: {
-            id: string;
-            createdAt: Date;
-            updatedAt: Date;
-            phone: string | null;
-            name: string;
-            lastName: string | null;
-            email: string | null;
-            city: string | null;
-            whatsappJid: string | null;
-            tags: string[];
-        };
         agent: {
             id: string;
             createdAt: Date;
-            updatedAt: Date;
             name: string;
             email: string;
             password: string;
             role: string;
             online: boolean;
+            updatedAt: Date;
+        };
+        user: {
+            id: string;
+            createdAt: Date;
+            name: string;
+            email: string | null;
+            updatedAt: Date;
+            phone: string | null;
+            lastName: string | null;
+            city: string | null;
+            whatsappJid: string | null;
+            tags: string[];
         };
         branch: {
             id: string;
             createdAt: Date;
+            name: string;
             updatedAt: Date;
             phone: string | null;
-            name: string;
-            description: string | null;
             address: string;
             latitude: number;
             longitude: number;
             openingHours: string | null;
+            description: string | null;
             isActive: boolean;
         };
         items: ({
@@ -354,16 +354,16 @@ export declare class OrdersController {
                 category: {
                     id: string;
                     createdAt: Date;
-                    updatedAt: Date;
                     name: string;
+                    updatedAt: Date;
                     description: string | null;
                     parentId: string | null;
                 };
             } & {
                 id: string;
                 createdAt: Date;
-                updatedAt: Date;
                 name: string;
+                updatedAt: Date;
                 description: string;
                 price: number;
                 stock: number;
@@ -372,39 +372,39 @@ export declare class OrdersController {
         } & {
             id: string;
             createdAt: Date;
-            productId: string;
+            subtotal: number;
+            discount: number;
             quantity: number;
             unitPrice: number;
-            discount: number;
-            subtotal: number;
+            productId: string;
             orderId: string;
         })[];
     } & {
         id: string;
-        userId: string | null;
         createdAt: Date;
-        updatedAt: Date;
         agentId: string | null;
-        discount: number;
-        branchId: string;
-        tax: number;
-        notes: string | null;
+        updatedAt: Date;
         status: string;
         subtotal: number;
+        discount: number;
+        tax: number;
         total: number;
+        notes: string | null;
+        branchId: string;
+        userId: string | null;
     }>;
     remove(id: string): Promise<{
         id: string;
-        userId: string | null;
         createdAt: Date;
-        updatedAt: Date;
         agentId: string | null;
-        discount: number;
-        branchId: string;
-        tax: number;
-        notes: string | null;
+        updatedAt: Date;
         status: string;
         subtotal: number;
+        discount: number;
+        tax: number;
         total: number;
+        notes: string | null;
+        branchId: string;
+        userId: string | null;
     }>;
 }

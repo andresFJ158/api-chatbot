@@ -11,11 +11,11 @@ export declare class MessagesController {
         };
     } & {
         id: string;
-        createdAt: Date;
-        agentId: string | null;
-        conversationId: string;
         sender: string;
         content: string;
+        createdAt: Date;
+        conversationId: string;
+        agentId: string | null;
     }>;
     findByConversation(conversationId: string): Promise<({
         agent: {
@@ -25,10 +25,10 @@ export declare class MessagesController {
         };
     } & {
         id: string;
-        createdAt: Date;
-        agentId: string | null;
-        conversationId: string;
         sender: string;
         content: string;
+        createdAt: Date;
+        conversationId: string;
+        agentId: string | null;
     })[]>;
 }

@@ -20,6 +20,8 @@ export declare class WhatsAppService implements OnModuleInit {
     private pendingMessages;
     private readonly maxPendingMessageAge;
     private readonly maxMessageRetries;
+    private baileys;
+    private getBaileys;
     constructor(prisma: PrismaService, messagesService: MessagesService, botService: BotService, branchesService: BranchesService, websocketGateway: WebSocketGateway);
     onModuleInit(): Promise<void>;
     private ensureSessionDirectory;

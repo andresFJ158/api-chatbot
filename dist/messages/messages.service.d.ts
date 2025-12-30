@@ -17,11 +17,11 @@ export declare class MessagesService {
         };
     } & {
         id: string;
-        createdAt: Date;
-        agentId: string | null;
-        conversationId: string;
         sender: string;
         content: string;
+        createdAt: Date;
+        conversationId: string;
+        agentId: string | null;
     }>;
     findByConversation(conversationId: string): Promise<({
         agent: {
@@ -31,10 +31,10 @@ export declare class MessagesService {
         };
     } & {
         id: string;
-        createdAt: Date;
-        agentId: string | null;
-        conversationId: string;
         sender: string;
         content: string;
+        createdAt: Date;
+        conversationId: string;
+        agentId: string | null;
     })[]>;
 }

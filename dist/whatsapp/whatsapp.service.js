@@ -15,7 +15,6 @@ var WhatsAppService_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.WhatsAppService = void 0;
 const common_1 = require("@nestjs/common");
-const baileys_1 = require("@whiskeysockets/baileys");
 const prisma_service_1 = require("../prisma/prisma.service");
 const messages_service_1 = require("../messages/messages.service");
 const bot_service_1 = require("../bot/bot.service");
@@ -28,6 +27,12 @@ const pino_1 = require("pino");
 const node_fetch_1 = require("node-fetch");
 const qrcode_terminal_1 = require("qrcode-terminal");
 let WhatsAppService = WhatsAppService_1 = class WhatsAppService {
+    async getBaileys() {
+        if (!this.baileys) {
+            this.baileys = await Promise.resolve().then(() => require('@whiskeysockets/baileys'));
+        }
+        return this.baileys;
+    }
     constructor(prisma, messagesService, botService, branchesService, websocketGateway) {
         this.prisma = prisma;
         this.messagesService = messagesService;
@@ -44,6 +49,7 @@ let WhatsAppService = WhatsAppService_1 = class WhatsAppService {
         this.pendingMessages = [];
         this.maxPendingMessageAge = 5 * 60 * 1000;
         this.maxMessageRetries = 3;
+        this.baileys = null;
     }
     async onModuleInit() {
         this.ensureSessionDirectory();
@@ -77,7 +83,8 @@ let WhatsAppService = WhatsAppService_1 = class WhatsAppService {
         try {
             const absoluteSessionPath = path.resolve(this.sessionPath);
             this.logger.log(`Initializing WhatsApp with session path: ${absoluteSessionPath}`);
-            const { state, saveCreds } = await (0, baileys_1.useMultiFileAuthState)(absoluteSessionPath);
+            const baileys = await this.getBaileys();
+            const { state, saveCreds } = await baileys.useMultiFileAuthState(absoluteSessionPath);
             if (state.creds?.registered) {
                 this.logger.log('Found existing session credentials');
             }
@@ -85,7 +92,7 @@ let WhatsAppService = WhatsAppService_1 = class WhatsAppService {
                 this.logger.log('No existing session found - QR code will be generated');
             }
             const logger = (0, pino_1.default)({ level: 'error' });
-            this.socket = (0, baileys_1.default)({
+            this.socket = baileys.makeWASocket({
                 auth: state,
                 logger: logger,
                 connectTimeoutMs: 60_000,
@@ -101,7 +108,7 @@ let WhatsAppService = WhatsAppService_1 = class WhatsAppService {
                 shouldSyncHistoryMessage: () => false,
                 shouldIgnoreJid: () => false,
             });
-            this.socket.ev.on('connection.update', (update) => {
+            this.socket.ev.on('connection.update', async (update) => {
                 const { connection, lastDisconnect, qr, isNewLogin, receivedPendingNotifications } = update;
                 this.logger.log(`Connection update: ${connection}, isNewLogin: ${isNewLogin}, hasQR: ${!!qr}, receivedPendingNotifications: ${receivedPendingNotifications}`);
                 if (qr) {
@@ -130,8 +137,9 @@ let WhatsAppService = WhatsAppService_1 = class WhatsAppService {
                     this.logger.log('✅ QR code generated - scan with your WhatsApp app');
                 }
                 if (connection === 'close') {
+                    const baileys = await this.getBaileys();
                     const disconnectReason = lastDisconnect?.error?.output?.statusCode;
-                    const isLoggedOut = disconnectReason === baileys_1.DisconnectReason.loggedOut;
+                    const isLoggedOut = disconnectReason === baileys.DisconnectReason.loggedOut;
                     const errorDetails = lastDisconnect?.error;
                     const errorMessage = errorDetails?.message || errorDetails?.toString() || 'Unknown error';
                     const isXmlError = errorMessage.includes('xml-not-well-formed') || errorMessage.includes('Stream Errored');
@@ -426,7 +434,8 @@ let WhatsAppService = WhatsAppService_1 = class WhatsAppService {
                     }
                     if (!phone) {
                         try {
-                            const decoded = (0, baileys_1.jidDecode)(remoteJid);
+                            const baileys = await this.getBaileys();
+                            const decoded = baileys.jidDecode(remoteJid);
                             if (decoded && decoded.user) {
                                 this.logger.debug(`[handleIncomingMessage] jidDecode result: ${JSON.stringify(decoded)}`);
                                 const decodedUser = decoded.user.replace(/\D/g, '');
@@ -448,7 +457,8 @@ let WhatsAppService = WhatsAppService_1 = class WhatsAppService {
                 }
                 else if (jidType === 'phone') {
                     try {
-                        const normalizedJid = (0, baileys_1.jidNormalizedUser)(remoteJid);
+                        const baileys = await this.getBaileys();
+                        const normalizedJid = baileys.jidNormalizedUser(remoteJid);
                         this.logger.debug(`[handleIncomingMessage] jidNormalizedUser result: ${normalizedJid} from JID: ${remoteJid}`);
                         if (normalizedJid && normalizedJid.includes('@')) {
                             phone = normalizedJid.split('@')[0];
