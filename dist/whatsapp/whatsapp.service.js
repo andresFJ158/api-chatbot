@@ -29,7 +29,8 @@ const qrcode_terminal_1 = require("qrcode-terminal");
 let WhatsAppService = WhatsAppService_1 = class WhatsAppService {
     async getBaileys() {
         if (!this.baileys) {
-            this.baileys = await Promise.resolve().then(() => require('@whiskeysockets/baileys'));
+            const loadBaileys = require('./baileys-loader.js');
+            this.baileys = await loadBaileys();
         }
         return this.baileys;
     }
@@ -114,6 +115,8 @@ let WhatsAppService = WhatsAppService_1 = class WhatsAppService {
                 if (qr) {
                     this.currentQR = qr;
                     this.connectionState = 'connecting';
+                    this.logger.log(`✅ QR code generated and saved (length: ${qr.length})`);
+                    this.logger.log(`QR available at /whatsapp/qr endpoint`);
                     console.log('\n');
                     console.log('═══════════════════════════════════════════════════════════════════');
                     console.log('📱 ESCANEA ESTE CÓDIGO QR CON TU WHATSAPP:');
@@ -215,7 +218,10 @@ let WhatsAppService = WhatsAppService_1 = class WhatsAppService {
                     this.logger.log('✅ WhatsApp connected successfully');
                     this.reconnectAttempts = 0;
                     this.connectionState = 'connected';
-                    this.currentQR = null;
+                    setTimeout(() => {
+                        this.currentQR = null;
+                        this.logger.debug('QR cleared after successful connection');
+                    }, 5000);
                     setTimeout(() => {
                         this.processPendingMessages().catch((error) => {
                             this.logger.error('Error processing pending messages:', error);
@@ -1148,6 +1154,7 @@ let WhatsAppService = WhatsAppService_1 = class WhatsAppService {
         };
     }
     async getQRCode() {
+        this.logger.debug(`getQRCode called - currentQR: ${this.currentQR ? 'exists' : 'null'}, state: ${this.connectionState}`);
         return {
             qr: this.currentQR,
             state: this.connectionState,

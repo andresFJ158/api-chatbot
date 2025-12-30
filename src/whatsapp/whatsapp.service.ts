@@ -51,10 +51,14 @@ export class WhatsAppService implements OnModuleInit {
   private readonly maxMessageRetries = 3;
   private baileys: BaileysModule | null = null;
 
-  // Lazy load baileys module
+  // Lazy load baileys module using a JavaScript loader file
+  // This prevents TypeScript from compiling the import to require()
   private async getBaileys(): Promise<BaileysModule> {
     if (!this.baileys) {
-      this.baileys = await import('@whiskeysockets/baileys');
+      // Use a JavaScript file to load baileys dynamically
+      // TypeScript won't compile this since it's in a .js file
+      const loadBaileys = require('./baileys-loader.js');
+      this.baileys = await loadBaileys();
     }
     return this.baileys;
   }
@@ -150,6 +154,9 @@ export class WhatsAppService implements OnModuleInit {
           // Guardar QR para acceso desde API
           this.currentQR = qr;
           this.connectionState = 'connecting';
+          
+          this.logger.log(`✅ QR code generated and saved (length: ${qr.length})`);
+          this.logger.log(`QR available at /whatsapp/qr endpoint`);
 
           // Imprimir QR en la consola de forma clara
           console.log('\n');
@@ -272,7 +279,11 @@ export class WhatsAppService implements OnModuleInit {
           this.logger.log('✅ WhatsApp connected successfully');
           this.reconnectAttempts = 0; // Reset counter on successful connection
           this.connectionState = 'connected';
-          this.currentQR = null; // Clear QR when connected
+          // Don't clear QR immediately - let it clear after a delay to ensure frontend got it
+          setTimeout(() => {
+            this.currentQR = null;
+            this.logger.debug('QR cleared after successful connection');
+          }, 5000); // Clear QR 5 seconds after connection
 
           // Process pending messages after connection is established
           setTimeout(() => {
@@ -1482,6 +1493,7 @@ export class WhatsAppService implements OnModuleInit {
   }
 
   async getQRCode(): Promise<{ qr: string | null; state: string }> {
+    this.logger.debug(`getQRCode called - currentQR: ${this.currentQR ? 'exists' : 'null'}, state: ${this.connectionState}`);
     return {
       qr: this.currentQR,
       state: this.connectionState,
