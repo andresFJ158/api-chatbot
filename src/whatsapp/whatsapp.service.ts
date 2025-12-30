@@ -51,14 +51,16 @@ export class WhatsAppService implements OnModuleInit {
   private readonly maxMessageRetries = 3;
   private baileys: BaileysModule | null = null;
 
-  // Lazy load baileys module using a JavaScript loader file
-  // This prevents TypeScript from compiling the import to require()
+  // Lazy load baileys module using eval to ensure truly dynamic import
+  // TypeScript cannot statically analyze eval, so it won't compile to require()
   private async getBaileys(): Promise<BaileysModule> {
     if (!this.baileys) {
-      // Use a JavaScript file to load baileys dynamically
-      // TypeScript won't compile this since it's in a .js file
-      const loadBaileys = require('./baileys-loader.js');
-      this.baileys = await loadBaileys();
+      // Split the module name to prevent static analysis
+      const moduleParts = ['@whiskeysockets', '/baileys'];
+      const moduleName = moduleParts.join('');
+      // Use eval to ensure dynamic import - TypeScript can't analyze this
+      // eslint-disable-next-line @typescript-eslint/no-implied-eval, no-eval
+      this.baileys = await eval(`import('${moduleName}')`);
     }
     return this.baileys;
   }

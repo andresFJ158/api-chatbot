@@ -29,8 +29,9 @@ const qrcode_terminal_1 = require("qrcode-terminal");
 let WhatsAppService = WhatsAppService_1 = class WhatsAppService {
     async getBaileys() {
         if (!this.baileys) {
-            const loadBaileys = require('./baileys-loader.js');
-            this.baileys = await loadBaileys();
+            const moduleParts = ['@whiskeysockets', '/baileys'];
+            const moduleName = moduleParts.join('');
+            this.baileys = await eval(`import('${moduleName}')`);
         }
         return this.baileys;
     }
