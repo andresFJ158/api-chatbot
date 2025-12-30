@@ -22,7 +22,8 @@
     "prisma:generate": "npx -y prisma@5.7.1 generate",
     "prisma:migrate": "npx -y prisma@5.7.1 migrate dev",
     "prisma:studio": "npx -y prisma@5.7.1 studio",
-    "create-admin": "ts-node -r dotenv/config scripts/create-admin.ts"
+    "create-admin": "ts-node -r dotenv/config scripts/create-admin.ts",
+    "create-admin:js": "node -r dotenv/config scripts/create-admin.js"
   },
   "dependencies": {
     "@nestjs/common": "^10.3.0",

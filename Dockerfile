@@ -40,8 +40,6 @@ EXPOSE 9090
 HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
     CMD node -e "require('http').get('http://localhost:9090/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"
 
-# Run migrations and start the application
-# First resolve any failed migrations, then deploy new ones
-CMD ["sh", "-c", "npx prisma migrate resolve --applied 20251219000000_add_opening_hours_remove_email 2>/dev/null || true; npx prisma migrate deploy && npm run start:prod"]
-
-RUN npm run create-admin
+# Run migrations, create admin (if needed), and start the application
+# First resolve any failed migrations, then deploy new ones, then create admin, then start
+CMD ["sh", "-c", "npx prisma migrate resolve --applied 20251219000000_add_opening_hours_remove_email 2>/dev/null || true; npx prisma migrate deploy && (node scripts/create-admin.js || true) && npm run start:prod"]
