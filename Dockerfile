@@ -1,10 +1,10 @@
-# Use Node.js LTS version
-FROM node:20-alpine
+# Use Node.js LTS version with Alpine 3.18 (supports OpenSSL 1.1 for Prisma)
+FROM node:20-alpine3.18
 
 # Set working directory
 WORKDIR /app
 
-# Install git and OpenSSL (required for npm packages and Prisma)
+# Install git and OpenSSL 1.1 compatibility (required for npm packages and Prisma)
 RUN apk add --no-cache git openssl openssl1.1-compat
 
 # Install dependencies first (for better caching)
