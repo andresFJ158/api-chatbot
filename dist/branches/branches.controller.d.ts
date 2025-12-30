@@ -8,29 +8,29 @@ export declare class BranchesController {
     constructor(branchesService: BranchesService);
     create(createBranchDto: CreateBranchDto): Promise<{
         id: string;
+        name: string;
+        description: string | null;
+        isActive: boolean;
         createdAt: Date;
         updatedAt: Date;
         phone: string | null;
-        name: string;
-        description: string | null;
         address: string;
         latitude: number;
         longitude: number;
         openingHours: string | null;
-        isActive: boolean;
     }>;
     findAll(activeOnly?: string): Promise<{
         id: string;
+        name: string;
+        description: string | null;
+        isActive: boolean;
         createdAt: Date;
         updatedAt: Date;
         phone: string | null;
-        name: string;
-        description: string | null;
         address: string;
         latitude: number;
         longitude: number;
         openingHours: string | null;
-        isActive: boolean;
     }[]>;
     findNearest(query: FindNearestBranchDto): Promise<any>;
     findNearestFromUrl(body: {
@@ -51,41 +51,41 @@ export declare class BranchesController {
     }>;
     findOne(id: string): Promise<{
         id: string;
+        name: string;
+        description: string | null;
+        isActive: boolean;
         createdAt: Date;
         updatedAt: Date;
         phone: string | null;
-        name: string;
-        description: string | null;
         address: string;
         latitude: number;
         longitude: number;
         openingHours: string | null;
-        isActive: boolean;
     }>;
     update(id: string, updateBranchDto: UpdateBranchDto): Promise<{
         id: string;
+        name: string;
+        description: string | null;
+        isActive: boolean;
         createdAt: Date;
         updatedAt: Date;
         phone: string | null;
-        name: string;
-        description: string | null;
         address: string;
         latitude: number;
         longitude: number;
         openingHours: string | null;
-        isActive: boolean;
     }>;
     remove(id: string): Promise<{
         id: string;
+        name: string;
+        description: string | null;
+        isActive: boolean;
         createdAt: Date;
         updatedAt: Date;
         phone: string | null;
-        name: string;
-        description: string | null;
         address: string;
         latitude: number;
         longitude: number;
         openingHours: string | null;
-        isActive: boolean;
     }>;
 }

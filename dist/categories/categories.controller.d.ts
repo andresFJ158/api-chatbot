@@ -20,10 +20,10 @@ export declare class CategoriesController {
         }[];
     } & {
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
         name: string;
         description: string | null;
+        createdAt: Date;
+        updatedAt: Date;
         parentId: string | null;
     }>;
     findAllCategories(parentId?: string): Promise<({
@@ -41,10 +41,10 @@ export declare class CategoriesController {
         }[];
     } & {
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
         name: string;
         description: string | null;
+        createdAt: Date;
+        updatedAt: Date;
         parentId: string | null;
     })[]>;
     findCategoryTree(): Promise<any[]>;
@@ -59,10 +59,10 @@ export declare class CategoriesController {
         };
     } & {
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
         name: string;
         description: string | null;
+        createdAt: Date;
+        updatedAt: Date;
         parentId: string | null;
     })[]>;
     findOneCategory(id: string): Promise<{
@@ -80,26 +80,26 @@ export declare class CategoriesController {
                     };
                 } & {
                     id: string;
-                    createdAt: Date;
-                    updatedAt: Date;
                     name: string;
                     description: string | null;
+                    createdAt: Date;
+                    updatedAt: Date;
                     parentId: string | null;
                 };
             } & {
                 id: string;
-                createdAt: Date;
-                updatedAt: Date;
                 name: string;
                 description: string | null;
+                createdAt: Date;
+                updatedAt: Date;
                 parentId: string | null;
             };
         } & {
             id: string;
-            createdAt: Date;
-            updatedAt: Date;
             name: string;
             description: string | null;
+            createdAt: Date;
+            updatedAt: Date;
             parentId: string | null;
         };
         children: ({
@@ -109,17 +109,17 @@ export declare class CategoriesController {
             };
         } & {
             id: string;
-            createdAt: Date;
-            updatedAt: Date;
             name: string;
             description: string | null;
+            createdAt: Date;
+            updatedAt: Date;
             parentId: string | null;
         })[];
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
         name: string;
         description: string | null;
+        createdAt: Date;
+        updatedAt: Date;
         parentId: string | null;
     }>;
     updateCategory(id: string, updateCategoryDto: UpdateCategoryDto): Promise<{
@@ -137,18 +137,18 @@ export declare class CategoriesController {
         }[];
     } & {
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
         name: string;
         description: string | null;
+        createdAt: Date;
+        updatedAt: Date;
         parentId: string | null;
     }>;
     removeCategory(id: string): Promise<{
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
         name: string;
         description: string | null;
+        createdAt: Date;
+        updatedAt: Date;
         parentId: string | null;
     }>;
 }

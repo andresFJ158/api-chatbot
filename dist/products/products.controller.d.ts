@@ -16,42 +16,42 @@ export declare class ProductsController {
                         };
                     } & {
                         id: string;
-                        createdAt: Date;
-                        updatedAt: Date;
                         name: string;
                         description: string | null;
+                        createdAt: Date;
+                        updatedAt: Date;
                         parentId: string | null;
                     };
                 } & {
                     id: string;
-                    createdAt: Date;
-                    updatedAt: Date;
                     name: string;
                     description: string | null;
+                    createdAt: Date;
+                    updatedAt: Date;
                     parentId: string | null;
                 };
             } & {
                 id: string;
-                createdAt: Date;
-                updatedAt: Date;
                 name: string;
                 description: string | null;
+                createdAt: Date;
+                updatedAt: Date;
                 parentId: string | null;
             };
         } & {
             id: string;
-            createdAt: Date;
-            updatedAt: Date;
             name: string;
             description: string | null;
+            createdAt: Date;
+            updatedAt: Date;
             parentId: string | null;
         };
     } & {
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
         name: string;
         description: string;
+        createdAt: Date;
+        updatedAt: Date;
         price: number;
         stock: number;
         categoryId: string | null;
@@ -67,42 +67,42 @@ export declare class ProductsController {
                         };
                     } & {
                         id: string;
-                        createdAt: Date;
-                        updatedAt: Date;
                         name: string;
                         description: string | null;
+                        createdAt: Date;
+                        updatedAt: Date;
                         parentId: string | null;
                     };
                 } & {
                     id: string;
-                    createdAt: Date;
-                    updatedAt: Date;
                     name: string;
                     description: string | null;
+                    createdAt: Date;
+                    updatedAt: Date;
                     parentId: string | null;
                 };
             } & {
                 id: string;
-                createdAt: Date;
-                updatedAt: Date;
                 name: string;
                 description: string | null;
+                createdAt: Date;
+                updatedAt: Date;
                 parentId: string | null;
             };
         } & {
             id: string;
-            createdAt: Date;
-            updatedAt: Date;
             name: string;
             description: string | null;
+            createdAt: Date;
+            updatedAt: Date;
             parentId: string | null;
         };
     } & {
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
         name: string;
         description: string;
+        createdAt: Date;
+        updatedAt: Date;
         price: number;
         stock: number;
         categoryId: string | null;
@@ -118,42 +118,42 @@ export declare class ProductsController {
                         };
                     } & {
                         id: string;
-                        createdAt: Date;
-                        updatedAt: Date;
                         name: string;
                         description: string | null;
+                        createdAt: Date;
+                        updatedAt: Date;
                         parentId: string | null;
                     };
                 } & {
                     id: string;
-                    createdAt: Date;
-                    updatedAt: Date;
                     name: string;
                     description: string | null;
+                    createdAt: Date;
+                    updatedAt: Date;
                     parentId: string | null;
                 };
             } & {
                 id: string;
-                createdAt: Date;
-                updatedAt: Date;
                 name: string;
                 description: string | null;
+                createdAt: Date;
+                updatedAt: Date;
                 parentId: string | null;
             };
         } & {
             id: string;
-            createdAt: Date;
-            updatedAt: Date;
             name: string;
             description: string | null;
+            createdAt: Date;
+            updatedAt: Date;
             parentId: string | null;
         };
     } & {
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
         name: string;
         description: string;
+        createdAt: Date;
+        updatedAt: Date;
         price: number;
         stock: number;
         categoryId: string | null;
@@ -169,42 +169,42 @@ export declare class ProductsController {
                         };
                     } & {
                         id: string;
-                        createdAt: Date;
-                        updatedAt: Date;
                         name: string;
                         description: string | null;
+                        createdAt: Date;
+                        updatedAt: Date;
                         parentId: string | null;
                     };
                 } & {
                     id: string;
-                    createdAt: Date;
-                    updatedAt: Date;
                     name: string;
                     description: string | null;
+                    createdAt: Date;
+                    updatedAt: Date;
                     parentId: string | null;
                 };
             } & {
                 id: string;
-                createdAt: Date;
-                updatedAt: Date;
                 name: string;
                 description: string | null;
+                createdAt: Date;
+                updatedAt: Date;
                 parentId: string | null;
             };
         } & {
             id: string;
-            createdAt: Date;
-            updatedAt: Date;
             name: string;
             description: string | null;
+            createdAt: Date;
+            updatedAt: Date;
             parentId: string | null;
         };
     } & {
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
         name: string;
         description: string;
+        createdAt: Date;
+        updatedAt: Date;
         price: number;
         stock: number;
         categoryId: string | null;
@@ -220,52 +220,52 @@ export declare class ProductsController {
                         };
                     } & {
                         id: string;
-                        createdAt: Date;
-                        updatedAt: Date;
                         name: string;
                         description: string | null;
+                        createdAt: Date;
+                        updatedAt: Date;
                         parentId: string | null;
                     };
                 } & {
                     id: string;
-                    createdAt: Date;
-                    updatedAt: Date;
                     name: string;
                     description: string | null;
+                    createdAt: Date;
+                    updatedAt: Date;
                     parentId: string | null;
                 };
             } & {
                 id: string;
-                createdAt: Date;
-                updatedAt: Date;
                 name: string;
                 description: string | null;
+                createdAt: Date;
+                updatedAt: Date;
                 parentId: string | null;
             };
         } & {
             id: string;
-            createdAt: Date;
-            updatedAt: Date;
             name: string;
             description: string | null;
+            createdAt: Date;
+            updatedAt: Date;
             parentId: string | null;
         };
     } & {
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
         name: string;
         description: string;
+        createdAt: Date;
+        updatedAt: Date;
         price: number;
         stock: number;
         categoryId: string | null;
     }>;
     remove(id: string): Promise<{
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
         name: string;
         description: string;
+        createdAt: Date;
+        updatedAt: Date;
         price: number;
         stock: number;
         categoryId: string | null;

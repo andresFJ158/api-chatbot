@@ -17,9 +17,9 @@ export declare class AuthService {
     }>;
     validateToken(payload: any): Promise<{
         id: string;
+        name: string;
         createdAt: Date;
         updatedAt: Date;
-        name: string;
         email: string;
         password: string;
         role: string;

@@ -5,24 +5,24 @@ export declare class AgentsService {
     constructor(prisma: PrismaService);
     findAll(): Promise<{
         id: string;
-        createdAt: Date;
         name: string;
+        createdAt: Date;
         email: string;
         role: string;
         online: boolean;
     }[]>;
     findOne(id: string): Promise<{
         id: string;
-        createdAt: Date;
         name: string;
+        createdAt: Date;
         email: string;
         role: string;
         online: boolean;
     }>;
     create(createDto: CreateAgentDto): Promise<{
         id: string;
-        createdAt: Date;
         name: string;
+        createdAt: Date;
         email: string;
         role: string;
         online: boolean;

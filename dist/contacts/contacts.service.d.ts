@@ -15,12 +15,12 @@ export declare class ContactsService {
         };
     } & {
         id: string;
-        createdAt: Date;
         name: string;
-        email: string | null;
+        createdAt: Date;
         updatedAt: Date;
         phone: string | null;
         lastName: string | null;
+        email: string | null;
         city: string | null;
         whatsappJid: string | null;
         tags: string[];
@@ -31,38 +31,38 @@ export declare class ContactsService {
         };
     } & {
         id: string;
-        createdAt: Date;
         name: string;
-        email: string | null;
+        createdAt: Date;
         updatedAt: Date;
         phone: string | null;
         lastName: string | null;
+        email: string | null;
         city: string | null;
         whatsappJid: string | null;
         tags: string[];
     })[]>;
     findOne(id: string): Promise<{
-        _count: {
-            conversations: number;
-        };
         conversations: {
             id: string;
             createdAt: Date;
             updatedAt: Date;
+            mode: string;
             userId: string;
             assignedAgentId: string | null;
             tag: string | null;
-            mode: string;
             lastMessage: string | null;
         }[];
+        _count: {
+            conversations: number;
+        };
     } & {
         id: string;
-        createdAt: Date;
         name: string;
-        email: string | null;
+        createdAt: Date;
         updatedAt: Date;
         phone: string | null;
         lastName: string | null;
+        email: string | null;
         city: string | null;
         whatsappJid: string | null;
         tags: string[];
@@ -73,12 +73,12 @@ export declare class ContactsService {
         };
     } & {
         id: string;
-        createdAt: Date;
         name: string;
-        email: string | null;
+        createdAt: Date;
         updatedAt: Date;
         phone: string | null;
         lastName: string | null;
+        email: string | null;
         city: string | null;
         whatsappJid: string | null;
         tags: string[];
@@ -89,24 +89,24 @@ export declare class ContactsService {
         };
     } & {
         id: string;
-        createdAt: Date;
         name: string;
-        email: string | null;
+        createdAt: Date;
         updatedAt: Date;
         phone: string | null;
         lastName: string | null;
+        email: string | null;
         city: string | null;
         whatsappJid: string | null;
         tags: string[];
     }>;
     remove(id: string): Promise<{
         id: string;
-        createdAt: Date;
         name: string;
-        email: string | null;
+        createdAt: Date;
         updatedAt: Date;
         phone: string | null;
         lastName: string | null;
+        email: string | null;
         city: string | null;
         whatsappJid: string | null;
         tags: string[];

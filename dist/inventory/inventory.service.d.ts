@@ -6,16 +6,6 @@ export declare class InventoryService {
     private readonly logger;
     constructor(prisma: PrismaService);
     createTransaction(createDto: CreateInventoryTransactionDto): Promise<{
-        agent: {
-            id: string;
-            createdAt: Date;
-            updatedAt: Date;
-            name: string;
-            email: string;
-            password: string;
-            role: string;
-            online: boolean;
-        };
         product: {
             category: {
                 parent: {
@@ -27,66 +17,66 @@ export declare class InventoryService {
                             };
                         } & {
                             id: string;
-                            createdAt: Date;
-                            updatedAt: Date;
                             name: string;
                             description: string | null;
+                            createdAt: Date;
+                            updatedAt: Date;
                             parentId: string | null;
                         };
                     } & {
                         id: string;
-                        createdAt: Date;
-                        updatedAt: Date;
                         name: string;
                         description: string | null;
+                        createdAt: Date;
+                        updatedAt: Date;
                         parentId: string | null;
                     };
                 } & {
                     id: string;
-                    createdAt: Date;
-                    updatedAt: Date;
                     name: string;
                     description: string | null;
+                    createdAt: Date;
+                    updatedAt: Date;
                     parentId: string | null;
                 };
             } & {
                 id: string;
-                createdAt: Date;
-                updatedAt: Date;
                 name: string;
                 description: string | null;
+                createdAt: Date;
+                updatedAt: Date;
                 parentId: string | null;
             };
         } & {
             id: string;
-            createdAt: Date;
-            updatedAt: Date;
             name: string;
             description: string;
+            createdAt: Date;
+            updatedAt: Date;
             price: number;
             stock: number;
             categoryId: string | null;
         };
+        agent: {
+            id: string;
+            name: string;
+            createdAt: Date;
+            updatedAt: Date;
+            email: string;
+            password: string;
+            role: string;
+            online: boolean;
+        };
     } & {
         id: string;
+        type: string;
         createdAt: Date;
         agentId: string | null;
-        productId: string;
         quantity: number;
-        type: string;
+        productId: string;
         glosa: string | null;
     }>;
     findAllTransactions(productId?: string, type?: string, agentId?: string): Promise<({
-        agent: {
-            id: string;
-            createdAt: Date;
-            updatedAt: Date;
-            name: string;
-            email: string;
-            password: string;
-            role: string;
-            online: boolean;
-        };
         product: {
             category: {
                 parent: {
@@ -98,66 +88,66 @@ export declare class InventoryService {
                             };
                         } & {
                             id: string;
-                            createdAt: Date;
-                            updatedAt: Date;
                             name: string;
                             description: string | null;
+                            createdAt: Date;
+                            updatedAt: Date;
                             parentId: string | null;
                         };
                     } & {
                         id: string;
-                        createdAt: Date;
-                        updatedAt: Date;
                         name: string;
                         description: string | null;
+                        createdAt: Date;
+                        updatedAt: Date;
                         parentId: string | null;
                     };
                 } & {
                     id: string;
-                    createdAt: Date;
-                    updatedAt: Date;
                     name: string;
                     description: string | null;
+                    createdAt: Date;
+                    updatedAt: Date;
                     parentId: string | null;
                 };
             } & {
                 id: string;
-                createdAt: Date;
-                updatedAt: Date;
                 name: string;
                 description: string | null;
+                createdAt: Date;
+                updatedAt: Date;
                 parentId: string | null;
             };
         } & {
             id: string;
-            createdAt: Date;
-            updatedAt: Date;
             name: string;
             description: string;
+            createdAt: Date;
+            updatedAt: Date;
             price: number;
             stock: number;
             categoryId: string | null;
         };
+        agent: {
+            id: string;
+            name: string;
+            createdAt: Date;
+            updatedAt: Date;
+            email: string;
+            password: string;
+            role: string;
+            online: boolean;
+        };
     } & {
         id: string;
+        type: string;
         createdAt: Date;
         agentId: string | null;
-        productId: string;
         quantity: number;
-        type: string;
+        productId: string;
         glosa: string | null;
     })[]>;
     findOneTransaction(id: string): Promise<{
-        agent: {
-            id: string;
-            createdAt: Date;
-            updatedAt: Date;
-            name: string;
-            email: string;
-            password: string;
-            role: string;
-            online: boolean;
-        };
         product: {
             category: {
                 parent: {
@@ -169,66 +159,66 @@ export declare class InventoryService {
                             };
                         } & {
                             id: string;
-                            createdAt: Date;
-                            updatedAt: Date;
                             name: string;
                             description: string | null;
+                            createdAt: Date;
+                            updatedAt: Date;
                             parentId: string | null;
                         };
                     } & {
                         id: string;
-                        createdAt: Date;
-                        updatedAt: Date;
                         name: string;
                         description: string | null;
+                        createdAt: Date;
+                        updatedAt: Date;
                         parentId: string | null;
                     };
                 } & {
                     id: string;
-                    createdAt: Date;
-                    updatedAt: Date;
                     name: string;
                     description: string | null;
+                    createdAt: Date;
+                    updatedAt: Date;
                     parentId: string | null;
                 };
             } & {
                 id: string;
-                createdAt: Date;
-                updatedAt: Date;
                 name: string;
                 description: string | null;
+                createdAt: Date;
+                updatedAt: Date;
                 parentId: string | null;
             };
         } & {
             id: string;
-            createdAt: Date;
-            updatedAt: Date;
             name: string;
             description: string;
+            createdAt: Date;
+            updatedAt: Date;
             price: number;
             stock: number;
             categoryId: string | null;
         };
+        agent: {
+            id: string;
+            name: string;
+            createdAt: Date;
+            updatedAt: Date;
+            email: string;
+            password: string;
+            role: string;
+            online: boolean;
+        };
     } & {
         id: string;
+        type: string;
         createdAt: Date;
         agentId: string | null;
-        productId: string;
         quantity: number;
-        type: string;
+        productId: string;
         glosa: string | null;
     }>;
     updateTransaction(id: string, updateDto: UpdateInventoryTransactionDto): Promise<{
-        agent: {
-            id: string;
-            createdAt: Date;
-            updatedAt: Date;
-            name: string;
-            email: string;
-            password: string;
-            role: string;
-            online: boolean;
-        };
         product: {
             category: {
                 parent: {
@@ -240,62 +230,72 @@ export declare class InventoryService {
                             };
                         } & {
                             id: string;
-                            createdAt: Date;
-                            updatedAt: Date;
                             name: string;
                             description: string | null;
+                            createdAt: Date;
+                            updatedAt: Date;
                             parentId: string | null;
                         };
                     } & {
                         id: string;
-                        createdAt: Date;
-                        updatedAt: Date;
                         name: string;
                         description: string | null;
+                        createdAt: Date;
+                        updatedAt: Date;
                         parentId: string | null;
                     };
                 } & {
                     id: string;
-                    createdAt: Date;
-                    updatedAt: Date;
                     name: string;
                     description: string | null;
+                    createdAt: Date;
+                    updatedAt: Date;
                     parentId: string | null;
                 };
             } & {
                 id: string;
-                createdAt: Date;
-                updatedAt: Date;
                 name: string;
                 description: string | null;
+                createdAt: Date;
+                updatedAt: Date;
                 parentId: string | null;
             };
         } & {
             id: string;
-            createdAt: Date;
-            updatedAt: Date;
             name: string;
             description: string;
+            createdAt: Date;
+            updatedAt: Date;
             price: number;
             stock: number;
             categoryId: string | null;
         };
+        agent: {
+            id: string;
+            name: string;
+            createdAt: Date;
+            updatedAt: Date;
+            email: string;
+            password: string;
+            role: string;
+            online: boolean;
+        };
     } & {
         id: string;
+        type: string;
         createdAt: Date;
         agentId: string | null;
-        productId: string;
         quantity: number;
-        type: string;
+        productId: string;
         glosa: string | null;
     }>;
     removeTransaction(id: string): Promise<{
         id: string;
+        type: string;
         createdAt: Date;
         agentId: string | null;
-        productId: string;
         quantity: number;
-        type: string;
+        productId: string;
         glosa: string | null;
     }>;
     getInventorySummary(): Promise<{
@@ -304,9 +304,6 @@ export declare class InventoryService {
         outOfStockProducts: number;
         totalStockValue: number;
         products: ({
-            _count: {
-                transactions: number;
-            };
             category: {
                 parent: {
                     parent: {
@@ -317,42 +314,45 @@ export declare class InventoryService {
                             };
                         } & {
                             id: string;
-                            createdAt: Date;
-                            updatedAt: Date;
                             name: string;
                             description: string | null;
+                            createdAt: Date;
+                            updatedAt: Date;
                             parentId: string | null;
                         };
                     } & {
                         id: string;
-                        createdAt: Date;
-                        updatedAt: Date;
                         name: string;
                         description: string | null;
+                        createdAt: Date;
+                        updatedAt: Date;
                         parentId: string | null;
                     };
                 } & {
                     id: string;
-                    createdAt: Date;
-                    updatedAt: Date;
                     name: string;
                     description: string | null;
+                    createdAt: Date;
+                    updatedAt: Date;
                     parentId: string | null;
                 };
             } & {
                 id: string;
-                createdAt: Date;
-                updatedAt: Date;
                 name: string;
                 description: string | null;
+                createdAt: Date;
+                updatedAt: Date;
                 parentId: string | null;
+            };
+            _count: {
+                transactions: number;
             };
         } & {
             id: string;
-            createdAt: Date;
-            updatedAt: Date;
             name: string;
             description: string;
+            createdAt: Date;
+            updatedAt: Date;
             price: number;
             stock: number;
             categoryId: string | null;

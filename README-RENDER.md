@@ -40,13 +40,17 @@ Configura las siguientes variables de entorno en Render:
 
 ### 5. Migraciones de Base de Datos
 
-Las migraciones se ejecutarán automáticamente si agregas este script al build:
+**IMPORTANTE**: Las migraciones se ejecutan automáticamente al iniciar la aplicación en producción.
+
+El `PrismaService` ejecuta `prisma migrate deploy` automáticamente cuando `NODE_ENV=production`, por lo que no necesitas ejecutarlas manualmente.
+
+Si necesitas ejecutarlas manualmente (por ejemplo, para debugging), puedes usar el shell de Render:
 
 ```bash
-npm ci && npx prisma generate && npx prisma migrate deploy && npm run build
+npm run migrate:deploy
 ```
 
-O puedes ejecutarlas manualmente después del primer despliegue:
+O directamente:
 
 ```bash
 npx prisma migrate deploy

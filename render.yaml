@@ -2,7 +2,7 @@ services:
   - type: web
     name: whatsapp-crm-backend
     env: node
-    buildCommand: npm ci && npx prisma generate && npm run build && npx prisma migrate deploy
+    buildCommand: npm ci && npx prisma generate && npm run build
     startCommand: npm run start:prod
     healthCheckPath: /health
     envVars:

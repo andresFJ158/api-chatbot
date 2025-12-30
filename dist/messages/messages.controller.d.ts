@@ -11,9 +11,9 @@ export declare class MessagesController {
         };
     } & {
         id: string;
+        createdAt: Date;
         sender: string;
         content: string;
-        createdAt: Date;
         conversationId: string;
         agentId: string | null;
     }>;
@@ -25,9 +25,9 @@ export declare class MessagesController {
         };
     } & {
         id: string;
+        createdAt: Date;
         sender: string;
         content: string;
-        createdAt: Date;
         conversationId: string;
         agentId: string | null;
     })[]>;

@@ -7,48 +7,48 @@ export declare class QuickRepliesController {
     constructor(quickRepliesService: QuickRepliesService);
     create(createQuickReplyDto: CreateQuickReplyDto): Promise<{
         id: string;
+        order: number;
         createdAt: Date;
         updatedAt: Date;
+        title: string;
         message: string;
         category: string | null;
-        order: number;
-        title: string;
     }>;
     findAll(category?: string): Promise<{
         id: string;
+        order: number;
         createdAt: Date;
         updatedAt: Date;
+        title: string;
         message: string;
         category: string | null;
-        order: number;
-        title: string;
     }[]>;
     getCategories(): Promise<string[]>;
     findOne(id: string): Promise<{
         id: string;
+        order: number;
         createdAt: Date;
         updatedAt: Date;
+        title: string;
         message: string;
         category: string | null;
-        order: number;
-        title: string;
     }>;
     update(id: string, updateQuickReplyDto: UpdateQuickReplyDto): Promise<{
         id: string;
+        order: number;
         createdAt: Date;
         updatedAt: Date;
+        title: string;
         message: string;
         category: string | null;
-        order: number;
-        title: string;
     }>;
     remove(id: string): Promise<{
         id: string;
+        order: number;
         createdAt: Date;
         updatedAt: Date;
+        title: string;
         message: string;
         category: string | null;
-        order: number;
-        title: string;
     }>;
 }

@@ -17,9 +17,9 @@ export declare class MessagesService {
         };
     } & {
         id: string;
+        createdAt: Date;
         sender: string;
         content: string;
-        createdAt: Date;
         conversationId: string;
         agentId: string | null;
     }>;
@@ -31,9 +31,9 @@ export declare class MessagesService {
         };
     } & {
         id: string;
+        createdAt: Date;
         sender: string;
         content: string;
-        createdAt: Date;
         conversationId: string;
         agentId: string | null;
     })[]>;

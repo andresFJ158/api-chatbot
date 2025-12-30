@@ -23,10 +23,10 @@ export declare class CategoriesService {
         }[];
     } & {
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
         name: string;
         description: string | null;
+        createdAt: Date;
+        updatedAt: Date;
         parentId: string | null;
     }>;
     findAllCategories(parentId?: string): Promise<({
@@ -44,10 +44,10 @@ export declare class CategoriesService {
         }[];
     } & {
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
         name: string;
         description: string | null;
+        createdAt: Date;
+        updatedAt: Date;
         parentId: string | null;
     })[]>;
     findCategoryTree(): Promise<any[]>;
@@ -66,26 +66,26 @@ export declare class CategoriesService {
                     };
                 } & {
                     id: string;
-                    createdAt: Date;
-                    updatedAt: Date;
                     name: string;
                     description: string | null;
+                    createdAt: Date;
+                    updatedAt: Date;
                     parentId: string | null;
                 };
             } & {
                 id: string;
-                createdAt: Date;
-                updatedAt: Date;
                 name: string;
                 description: string | null;
+                createdAt: Date;
+                updatedAt: Date;
                 parentId: string | null;
             };
         } & {
             id: string;
-            createdAt: Date;
-            updatedAt: Date;
             name: string;
             description: string | null;
+            createdAt: Date;
+            updatedAt: Date;
             parentId: string | null;
         };
         children: ({
@@ -95,17 +95,17 @@ export declare class CategoriesService {
             };
         } & {
             id: string;
-            createdAt: Date;
-            updatedAt: Date;
             name: string;
             description: string | null;
+            createdAt: Date;
+            updatedAt: Date;
             parentId: string | null;
         })[];
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
         name: string;
         description: string | null;
+        createdAt: Date;
+        updatedAt: Date;
         parentId: string | null;
     }>;
     updateCategory(id: string, updateDto: UpdateCategoryDto): Promise<{
@@ -123,18 +123,18 @@ export declare class CategoriesService {
         }[];
     } & {
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
         name: string;
         description: string | null;
+        createdAt: Date;
+        updatedAt: Date;
         parentId: string | null;
     }>;
     removeCategory(id: string): Promise<{
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
         name: string;
         description: string | null;
+        createdAt: Date;
+        updatedAt: Date;
         parentId: string | null;
     }>;
     findAllFlat(): Promise<({
@@ -148,10 +148,10 @@ export declare class CategoriesService {
         };
     } & {
         id: string;
-        createdAt: Date;
-        updatedAt: Date;
         name: string;
         description: string | null;
+        createdAt: Date;
+        updatedAt: Date;
         parentId: string | null;
     })[]>;
 }

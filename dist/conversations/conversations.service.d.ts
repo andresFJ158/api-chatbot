@@ -15,10 +15,10 @@ export declare class ConversationsService {
     }): Promise<({
         user: {
             id: string;
+            name: string;
             createdAt: Date;
             updatedAt: Date;
             phone: string;
-            name: string;
             email: string;
             tags: string[];
         };
@@ -31,28 +31,28 @@ export declare class ConversationsService {
         messages: {
             id: string;
             createdAt: Date;
-            agentId: string | null;
-            conversationId: string;
             sender: string;
             content: string;
+            conversationId: string;
+            agentId: string | null;
         }[];
     } & {
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        mode: string;
         userId: string;
         assignedAgentId: string | null;
         tag: string | null;
-        mode: string;
         lastMessage: string | null;
-        createdAt: Date;
-        updatedAt: Date;
     })[]>;
     findOne(id: string): Promise<{
         user: {
             id: string;
+            name: string;
             createdAt: Date;
             updatedAt: Date;
             phone: string | null;
-            name: string;
             lastName: string | null;
             email: string | null;
             city: string | null;
@@ -68,28 +68,28 @@ export declare class ConversationsService {
         messages: {
             id: string;
             createdAt: Date;
-            agentId: string | null;
-            conversationId: string;
             sender: string;
             content: string;
+            conversationId: string;
+            agentId: string | null;
         }[];
     } & {
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        mode: string;
         userId: string;
         assignedAgentId: string | null;
         tag: string | null;
-        mode: string;
         lastMessage: string | null;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     create(createDto: CreateConversationDto): Promise<{
         user: {
             id: string;
+            name: string;
             createdAt: Date;
             updatedAt: Date;
             phone: string | null;
-            name: string;
             lastName: string | null;
             email: string | null;
             city: string | null;
@@ -105,28 +105,28 @@ export declare class ConversationsService {
         messages: {
             id: string;
             createdAt: Date;
-            agentId: string | null;
-            conversationId: string;
             sender: string;
             content: string;
+            conversationId: string;
+            agentId: string | null;
         }[];
     } & {
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        mode: string;
         userId: string;
         assignedAgentId: string | null;
         tag: string | null;
-        mode: string;
         lastMessage: string | null;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     assign(id: string, assignDto: AssignConversationDto): Promise<{
         user: {
             id: string;
+            name: string;
             createdAt: Date;
             updatedAt: Date;
             phone: string | null;
-            name: string;
             lastName: string | null;
             email: string | null;
             city: string | null;
@@ -135,9 +135,9 @@ export declare class ConversationsService {
         };
         assignedAgent: {
             id: string;
+            name: string;
             createdAt: Date;
             updatedAt: Date;
-            name: string;
             email: string;
             password: string;
             role: string;
@@ -145,21 +145,21 @@ export declare class ConversationsService {
         };
     } & {
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        mode: string;
         userId: string;
         assignedAgentId: string | null;
         tag: string | null;
-        mode: string;
         lastMessage: string | null;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
     updateMode(id: string, updateModeDto: UpdateModeDto): Promise<{
         user: {
             id: string;
+            name: string;
             createdAt: Date;
             updatedAt: Date;
             phone: string | null;
-            name: string;
             lastName: string | null;
             email: string | null;
             city: string | null;
@@ -168,9 +168,9 @@ export declare class ConversationsService {
         };
         assignedAgent: {
             id: string;
+            name: string;
             createdAt: Date;
             updatedAt: Date;
-            name: string;
             email: string;
             password: string;
             role: string;
@@ -178,12 +178,12 @@ export declare class ConversationsService {
         };
     } & {
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
+        mode: string;
         userId: string;
         assignedAgentId: string | null;
         tag: string | null;
-        mode: string;
         lastMessage: string | null;
-        createdAt: Date;
-        updatedAt: Date;
     }>;
 }

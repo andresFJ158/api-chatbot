@@ -6,57 +6,57 @@ export declare class OrdersController {
     private readonly logger;
     constructor(ordersService: OrdersService);
     create(createOrderDto: CreateOrderDto, req: any): Promise<{
-        agent: {
-            id: string;
-            createdAt: Date;
-            name: string;
-            email: string;
-            password: string;
-            role: string;
-            online: boolean;
-            updatedAt: Date;
-        };
         user: {
             id: string;
-            createdAt: Date;
             name: string;
-            email: string | null;
+            createdAt: Date;
             updatedAt: Date;
             phone: string | null;
             lastName: string | null;
+            email: string | null;
             city: string | null;
             whatsappJid: string | null;
             tags: string[];
         };
+        agent: {
+            id: string;
+            name: string;
+            createdAt: Date;
+            updatedAt: Date;
+            email: string;
+            password: string;
+            role: string;
+            online: boolean;
+        };
         branch: {
             id: string;
-            createdAt: Date;
             name: string;
+            description: string | null;
+            isActive: boolean;
+            createdAt: Date;
             updatedAt: Date;
             phone: string | null;
             address: string;
             latitude: number;
             longitude: number;
             openingHours: string | null;
-            description: string | null;
-            isActive: boolean;
         };
         items: ({
             product: {
                 category: {
                     id: string;
-                    createdAt: Date;
                     name: string;
-                    updatedAt: Date;
                     description: string | null;
+                    createdAt: Date;
+                    updatedAt: Date;
                     parentId: string | null;
                 };
             } & {
                 id: string;
-                createdAt: Date;
                 name: string;
-                updatedAt: Date;
                 description: string;
+                createdAt: Date;
+                updatedAt: Date;
                 price: number;
                 stock: number;
                 categoryId: string | null;
@@ -74,8 +74,9 @@ export declare class OrdersController {
     } & {
         id: string;
         createdAt: Date;
-        agentId: string | null;
         updatedAt: Date;
+        userId: string | null;
+        agentId: string | null;
         status: string;
         subtotal: number;
         discount: number;
@@ -83,19 +84,18 @@ export declare class OrdersController {
         total: number;
         notes: string | null;
         branchId: string;
-        userId: string | null;
     }>;
     findAll(branchId?: string, userId?: string, status?: string, startDate?: string, endDate?: string): Promise<({
-        agent: {
-            id: string;
-            name: string;
-            email: string;
-        };
         user: {
             id: string;
             name: string;
             phone: string;
             lastName: string;
+        };
+        agent: {
+            id: string;
+            name: string;
+            email: string;
         };
         branch: {
             id: string;
@@ -106,18 +106,18 @@ export declare class OrdersController {
             product: {
                 category: {
                     id: string;
-                    createdAt: Date;
                     name: string;
-                    updatedAt: Date;
                     description: string | null;
+                    createdAt: Date;
+                    updatedAt: Date;
                     parentId: string | null;
                 };
             } & {
                 id: string;
-                createdAt: Date;
                 name: string;
-                updatedAt: Date;
                 description: string;
+                createdAt: Date;
+                updatedAt: Date;
                 price: number;
                 stock: number;
                 categoryId: string | null;
@@ -135,8 +135,9 @@ export declare class OrdersController {
     } & {
         id: string;
         createdAt: Date;
-        agentId: string | null;
         updatedAt: Date;
+        userId: string | null;
+        agentId: string | null;
         status: string;
         subtotal: number;
         discount: number;
@@ -144,7 +145,6 @@ export declare class OrdersController {
         total: number;
         notes: string | null;
         branchId: string;
-        userId: string | null;
     })[]>;
     getStats(branchId?: string, startDate?: string, endDate?: string): Promise<{
         totalOrders: number;
@@ -154,57 +154,57 @@ export declare class OrdersController {
         averageOrderValue: number;
     }>;
     findOne(id: string): Promise<{
-        agent: {
-            id: string;
-            createdAt: Date;
-            name: string;
-            email: string;
-            password: string;
-            role: string;
-            online: boolean;
-            updatedAt: Date;
-        };
         user: {
             id: string;
-            createdAt: Date;
             name: string;
-            email: string | null;
+            createdAt: Date;
             updatedAt: Date;
             phone: string | null;
             lastName: string | null;
+            email: string | null;
             city: string | null;
             whatsappJid: string | null;
             tags: string[];
         };
+        agent: {
+            id: string;
+            name: string;
+            createdAt: Date;
+            updatedAt: Date;
+            email: string;
+            password: string;
+            role: string;
+            online: boolean;
+        };
         branch: {
             id: string;
-            createdAt: Date;
             name: string;
+            description: string | null;
+            isActive: boolean;
+            createdAt: Date;
             updatedAt: Date;
             phone: string | null;
             address: string;
             latitude: number;
             longitude: number;
             openingHours: string | null;
-            description: string | null;
-            isActive: boolean;
         };
         items: ({
             product: {
                 category: {
                     id: string;
-                    createdAt: Date;
                     name: string;
-                    updatedAt: Date;
                     description: string | null;
+                    createdAt: Date;
+                    updatedAt: Date;
                     parentId: string | null;
                 };
             } & {
                 id: string;
-                createdAt: Date;
                 name: string;
-                updatedAt: Date;
                 description: string;
+                createdAt: Date;
+                updatedAt: Date;
                 price: number;
                 stock: number;
                 categoryId: string | null;
@@ -222,8 +222,9 @@ export declare class OrdersController {
     } & {
         id: string;
         createdAt: Date;
-        agentId: string | null;
         updatedAt: Date;
+        userId: string | null;
+        agentId: string | null;
         status: string;
         subtotal: number;
         discount: number;
@@ -231,60 +232,59 @@ export declare class OrdersController {
         total: number;
         notes: string | null;
         branchId: string;
-        userId: string | null;
     }>;
     update(id: string, updateOrderDto: UpdateOrderDto): Promise<{
-        agent: {
-            id: string;
-            createdAt: Date;
-            name: string;
-            email: string;
-            password: string;
-            role: string;
-            online: boolean;
-            updatedAt: Date;
-        };
         user: {
             id: string;
-            createdAt: Date;
             name: string;
-            email: string | null;
+            createdAt: Date;
             updatedAt: Date;
             phone: string | null;
             lastName: string | null;
+            email: string | null;
             city: string | null;
             whatsappJid: string | null;
             tags: string[];
         };
+        agent: {
+            id: string;
+            name: string;
+            createdAt: Date;
+            updatedAt: Date;
+            email: string;
+            password: string;
+            role: string;
+            online: boolean;
+        };
         branch: {
             id: string;
-            createdAt: Date;
             name: string;
+            description: string | null;
+            isActive: boolean;
+            createdAt: Date;
             updatedAt: Date;
             phone: string | null;
             address: string;
             latitude: number;
             longitude: number;
             openingHours: string | null;
-            description: string | null;
-            isActive: boolean;
         };
         items: ({
             product: {
                 category: {
                     id: string;
-                    createdAt: Date;
                     name: string;
-                    updatedAt: Date;
                     description: string | null;
+                    createdAt: Date;
+                    updatedAt: Date;
                     parentId: string | null;
                 };
             } & {
                 id: string;
-                createdAt: Date;
                 name: string;
-                updatedAt: Date;
                 description: string;
+                createdAt: Date;
+                updatedAt: Date;
                 price: number;
                 stock: number;
                 categoryId: string | null;
@@ -302,8 +302,9 @@ export declare class OrdersController {
     } & {
         id: string;
         createdAt: Date;
-        agentId: string | null;
         updatedAt: Date;
+        userId: string | null;
+        agentId: string | null;
         status: string;
         subtotal: number;
         discount: number;
@@ -311,60 +312,59 @@ export declare class OrdersController {
         total: number;
         notes: string | null;
         branchId: string;
-        userId: string | null;
     }>;
     cancel(id: string, req: any): Promise<{
-        agent: {
-            id: string;
-            createdAt: Date;
-            name: string;
-            email: string;
-            password: string;
-            role: string;
-            online: boolean;
-            updatedAt: Date;
-        };
         user: {
             id: string;
-            createdAt: Date;
             name: string;
-            email: string | null;
+            createdAt: Date;
             updatedAt: Date;
             phone: string | null;
             lastName: string | null;
+            email: string | null;
             city: string | null;
             whatsappJid: string | null;
             tags: string[];
         };
+        agent: {
+            id: string;
+            name: string;
+            createdAt: Date;
+            updatedAt: Date;
+            email: string;
+            password: string;
+            role: string;
+            online: boolean;
+        };
         branch: {
             id: string;
-            createdAt: Date;
             name: string;
+            description: string | null;
+            isActive: boolean;
+            createdAt: Date;
             updatedAt: Date;
             phone: string | null;
             address: string;
             latitude: number;
             longitude: number;
             openingHours: string | null;
-            description: string | null;
-            isActive: boolean;
         };
         items: ({
             product: {
                 category: {
                     id: string;
-                    createdAt: Date;
                     name: string;
-                    updatedAt: Date;
                     description: string | null;
+                    createdAt: Date;
+                    updatedAt: Date;
                     parentId: string | null;
                 };
             } & {
                 id: string;
-                createdAt: Date;
                 name: string;
-                updatedAt: Date;
                 description: string;
+                createdAt: Date;
+                updatedAt: Date;
                 price: number;
                 stock: number;
                 categoryId: string | null;
@@ -382,8 +382,9 @@ export declare class OrdersController {
     } & {
         id: string;
         createdAt: Date;
-        agentId: string | null;
         updatedAt: Date;
+        userId: string | null;
+        agentId: string | null;
         status: string;
         subtotal: number;
         discount: number;
@@ -391,13 +392,13 @@ export declare class OrdersController {
         total: number;
         notes: string | null;
         branchId: string;
-        userId: string | null;
     }>;
     remove(id: string): Promise<{
         id: string;
         createdAt: Date;
-        agentId: string | null;
         updatedAt: Date;
+        userId: string | null;
+        agentId: string | null;
         status: string;
         subtotal: number;
         discount: number;
@@ -405,6 +406,5 @@ export declare class OrdersController {
         total: number;
         notes: string | null;
         branchId: string;
-        userId: string | null;
     }>;
 }
