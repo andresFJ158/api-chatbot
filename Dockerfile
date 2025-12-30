@@ -4,8 +4,8 @@ FROM node:20-alpine
 # Set working directory
 WORKDIR /app
 
-# Install git (required for some npm packages)
-RUN apk add --no-cache git
+# Install git and OpenSSL (required for npm packages and Prisma)
+RUN apk add --no-cache git openssl openssl1.1-compat
 
 # Install dependencies first (for better caching)
 COPY package*.json ./
